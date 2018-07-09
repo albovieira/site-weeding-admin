@@ -24,7 +24,9 @@
     "vue-awesome": "^3.0.0",
     "vue-clipboard2": "^0.1.1",
     "vue-loading-overlay": "^2.0.4",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "express": "^4.16.2",
+    "connect-history-api-fallback": "^1.5.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
