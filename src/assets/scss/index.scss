@@ -1,0 +1,32 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/_variables.scss';
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~bootstrap-vue/dist/bootstrap-vue.css';
+
+@import '~toastr/toastr.scss';
+@import '~vue-loading-overlay/dist/vue-loading.min.css';
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+/* General styles */
+html {
+  min-height: 100%;
+  width: 100%;
+}
+body {
+  line-height: 1.8;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  color: #484848;
+  margin: 0;
+  background-color: #fff;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 8rem;
+}
+* {
+  font-family: 'Open Sans', sans-serif !important;
+}
