@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "deploy": "yarn build && git add . && git commit -m 'Adding dist folder.' && git push && git push heroku master"
   },
   "dependencies": {
     "axios": "^0.18.0",
