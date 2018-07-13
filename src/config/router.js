@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import Login from '@/pages/login/Login';
 import Home from '@/pages/home/Home';
 import Ranking from '@/pages/ranking/Ranking';
 import Messages from '@/pages/messages/Messages';
@@ -12,6 +13,12 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      name: 'Login',
+      component: Login,
+      meta: { title: 'Login' }
+    },
+    {
+      path: '/home',
       name: 'Home',
       component: Home,
       meta: { title: 'Home' }

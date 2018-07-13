@@ -2,8 +2,6 @@
   <div id="header" class="header sticky-top">
 
     <b-navbar toggleable="md" variant="white">
-      <div class="col-md-2 col-xl-2 col-12 ">
-      </div>
       <b-collapse id='menu' is-nav class="nav-wrapper">
         <b-navbar-nav class="ml-auto">
           <!-- <b-nav-item right class="user">

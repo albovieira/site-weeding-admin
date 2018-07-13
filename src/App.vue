@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <main>
-      <Header  />
+      <Header v-if="loggedIn"  />
       <router-view></router-view>
     </main>
   </div>
@@ -14,7 +14,18 @@ export default {
   components: {
     Header
   },
-  name: 'app'
+  data() {
+    return {
+      loggedIn: null
+    };
+  },
+  name: 'app',
+  created() {
+    if (window.localStorage.getItem('loggedin')) {
+      this.loggedIn = window.localStorage.getItem('loggedin');
+    }
+  },
+  methods: {}
 };
 </script>
 

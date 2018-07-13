@@ -112,6 +112,11 @@ export default {
     };
   },
   async created() {
+    if (!window.localStorage.getItem('loggedin')) {
+      this.$router.push('home');
+      window.localStorage.setItem('loggedin', true);
+      window.location.reload();
+    }
     await this.fetchData();
   },
   methods: {

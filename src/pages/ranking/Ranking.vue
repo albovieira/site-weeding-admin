@@ -42,21 +42,25 @@ export default {
   },
   methods: {
     async fetchData(pageFromPagination) {
-      let page = 1;
-      let url = 'ranking/all';
-      if (pageFromPagination) {
-        page = pageFromPagination;
-      }
-      url = `${url}?limit=10${buildQuery({ page: pageFromPagination })}`;
+      try {
+        let page = 1;
+        let url = 'ranking/all';
+        if (pageFromPagination) {
+          page = pageFromPagination;
+        }
+        url = `${url}?limit=10${buildQuery({ page: pageFromPagination })}`;
 
-      if (this.filter.name) {
-        url = `${url}&name=${this.filter.name}`;
-      }
+        if (this.filter.name) {
+          url = `${url}&name=${this.filter.name}`;
+        }
 
-      this.isLoading = true;
-      const { data } = await http.get(url);
-      this.ranking = data;
-      this.isLoading = false;
+        this.isLoading = true;
+        const { data } = await http.get(url);
+        this.ranking = data;
+      } catch (error) {
+        console.log(error);
+        this.isLoading = false;
+      }
     }
   }
 };
