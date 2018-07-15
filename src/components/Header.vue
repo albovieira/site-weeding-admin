@@ -1,6 +1,5 @@
 <template>
   <div id="header" class="header sticky-top">
-
     <b-navbar toggleable="md" variant="white">
       <b-collapse id='menu' is-nav class="nav-wrapper">
         <b-navbar-nav class="ml-auto">
@@ -56,6 +55,7 @@ export default {
 .header {
   border-bottom: 1px solid red;
   padding: 1rem;
+  background-color: #fff;
 }
 .navbar {
   img {

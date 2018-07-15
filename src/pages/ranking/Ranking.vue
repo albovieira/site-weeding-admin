@@ -57,6 +57,7 @@ export default {
         this.isLoading = true;
         const { data } = await http.get(url);
         this.ranking = data;
+        this.isLoading = false;
       } catch (error) {
         console.log(error);
         this.isLoading = false;
