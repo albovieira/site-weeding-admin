@@ -113,8 +113,11 @@ export default {
   },
   async created() {
     if (!window.localStorage.getItem('loggedin')) {
-      this.$router.push('home');
-      window.localStorage.setItem('loggedin', true);
+      this.$router.push('/');
+    }
+    if (!window.localStorage.getItem('loaded')) {
+      window.localStorage.setItem('loaded', true);
+      console.log(`reloading`);
       window.location.reload();
     }
     await this.fetchData();

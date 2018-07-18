@@ -20,8 +20,14 @@
               <b-nav-item right to="/ranking">
                 <div>Ranking Musicas</div>
               </b-nav-item>
+              <b-nav-item right to="/wished-musics">
+                <div>Musicas</div>
+              </b-nav-item>
               <b-nav-item right to="/messages">
                 <div>Mensagens</div>
+              </b-nav-item>
+              <b-nav-item right @click="logout">
+                <div>Sair</div>
               </b-nav-item>
             </b-navbar-nav>
           </b-collapse>
@@ -46,7 +52,13 @@ export default {
     };
   },
   created() {},
-  methods: {}
+  methods: {
+    logout() {
+      window.localStorage.clear();
+      this.$router.push('/');
+      window.location.reload();
+    }
+  }
 };
 </script>
 

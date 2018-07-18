@@ -2,15 +2,10 @@
   <div id="page"  class="row col-xs-12 col-sm-12 col-md-12 col-lg-12"  align="center">
     <loading :active.sync="isLoading"></loading>
     <b-container>
-      <b-row style="margin:1rem">
-        <b-col>
-          <b-form-input v-model="filter.name" type="text" placeholder="Filtre pelo nome" @change="fetchData"></b-form-input>
-        </b-col>
-      </b-row>
       <b-row>
-        <b-table  :items="ranking.docs" :fields="fields">
+        <b-table  :items="wishedMusic.docs" :fields="fields">
         </b-table>
-        <b-pagination @input="fetchData($event)" size="sm" :total-rows="ranking.total" v-model="page" :per-page="ranking.limit">
+        <b-pagination @input="fetchData($event)" size="sm" :total-rows="wishedMusic.total" v-model="page" :per-page="wishedMusic.limit">
         </b-pagination>
       </b-row>
     </b-container>
@@ -24,7 +19,7 @@ import { buildQuery } from '@/services/util';
 import swal from 'sweetalert';
 
 export default {
-  name: 'Ranking',
+  name: 'WishedMusis',
   components: {
     Loading
   },
@@ -33,8 +28,24 @@ export default {
       isLoading: false,
       page: 1,
       filter: {},
-      ranking: [],
-      fields: ['name', 'music', 'total']
+      wishedMusic: [],
+      fields: [
+        {
+          key: 'name',
+          label: 'Nome'
+        },
+        {
+          key: 'music',
+          label: 'Musica'
+        },
+        {
+          key: 'guest',
+          label: 'Convidado',
+          formatter: guest => {
+            return guest.name;
+          }
+        }
+      ]
     };
   },
   async created() {
@@ -52,7 +63,7 @@ export default {
     async fetchData(pageFromPagination) {
       try {
         let page = 1;
-        let url = 'ranking/all';
+        let url = 'wished-musics';
         if (pageFromPagination) {
           page = pageFromPagination;
         }
@@ -64,7 +75,7 @@ export default {
 
         this.isLoading = true;
         const { data } = await http.get(url);
-        this.ranking = data;
+        this.wishedMusic = data;
         this.isLoading = false;
       } catch (error) {
         console.log(error);

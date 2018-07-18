@@ -36,7 +36,11 @@ export default {
       db_pass: '103229'
     };
   },
-  async created() {},
+  async created() {
+    if (window.localStorage.getItem('loggedin')) {
+      return this.$router.push('home');
+    }
+  },
   methods: {
     submit(e) {
       e.preventDefault();
@@ -45,6 +49,7 @@ export default {
         this.form.username === this.db_username &&
         this.form.password === this.db_pass
       ) {
+        window.localStorage.setItem('loggedin', true);
         this.$router.push('home');
       } else {
         swal('Login incorreto', 'Senha ou usuario incorretos', 'error');

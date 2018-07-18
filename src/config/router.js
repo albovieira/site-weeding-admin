@@ -5,6 +5,7 @@ import Login from '@/pages/login/Login';
 import Home from '@/pages/home/Home';
 import Ranking from '@/pages/ranking/Ranking';
 import Messages from '@/pages/messages/Messages';
+import WishedMusics from '@/pages/wished-musics/WishedMusics';
 
 Vue.use(Router);
 
@@ -34,6 +35,12 @@ const router = new Router({
       name: 'Messages',
       component: Messages,
       meta: { title: 'Messages' }
+    },
+    {
+      path: '/wished-musics',
+      name: 'WishedMusics',
+      component: WishedMusics,
+      meta: { title: 'WishedMusics' }
     }
   ],
   scrollBehavior(to) {
