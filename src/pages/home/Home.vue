@@ -4,9 +4,9 @@
     <b-container>
       <b-row>
         <b-col style="padding:1rem">
-          <h4>Total: <strong >{{total}}</strong></h4>
-          <h4>Confirmados: <strong class="text-success">{{totalConfirmed}}</strong></h4>
-          <h4>Pendentes: <strong class="text-danger">{{totalUnconfirmed}}</strong></h4>
+          <h5 class="text-left">Total: <strong >{{total}}</strong></h5>
+          <h5 class="text-left">Confirmados: <strong class="text-success">{{totalConfirmed}}</strong></h5>
+          <h5 class="text-left">Pendentes: <strong class="text-danger">{{totalUnconfirmed}}</strong></h5>
         </b-col>
       </b-row>
       <b-row style="margin:1rem">
