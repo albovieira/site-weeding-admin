@@ -4,7 +4,7 @@
     <b-container>
       <b-row>
         <b-col style="padding:1rem">
-          <h4>Total: <strong >{{guests.total}}</strong></h4>
+          <h4>Total: <strong >{{total}}</strong></h4>
           <h4>Confirmados: <strong class="text-success">{{totalConfirmed}}</strong></h4>
           <h4>Pendentes: <strong class="text-danger">{{totalUnconfirmed}}</strong></h4>
         </b-col>
@@ -72,6 +72,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      total: 0,
       totalConfirmed: 0,
       totalUnconfirmed: 0,
       page: 1,
@@ -164,6 +165,7 @@ export default {
       this.guests = data;
       this.totalConfirmed = data.confirmed;
       this.totalUnconfirmed = data.unconfirmed;
+      this.total = data.totalGuests;
       this.isLoading = false;
     },
     async setStatus(guest) {
