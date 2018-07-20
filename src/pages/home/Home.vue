@@ -2,6 +2,13 @@
   <div id="page"  class="row col-xs-12 col-sm-12 col-md-12 col-lg-12"  align="center">
     <loading :active.sync="isLoading"></loading>
     <b-container>
+      <b-row>
+        <b-col style="padding:1rem">
+          <h4>Total: <strong >{{guests.total}}</strong></h4>
+          <h4>Confirmados: <strong class="text-success">{{totalConfirmed}}</strong></h4>
+          <h4>Pendentes: <strong class="text-danger">{{totalUnconfirmed}}</strong></h4>
+        </b-col>
+      </b-row>
       <b-row style="margin:1rem">
         <b-col>
           <b-form-input v-model="filter.name" type="text" placeholder="Filtre pelo nome" @change="fetchData"></b-form-input>
@@ -65,6 +72,8 @@ export default {
   data() {
     return {
       isLoading: false,
+      totalConfirmed: 0,
+      totalUnconfirmed: 0,
       page: 1,
       filter: { confirmed: null },
       guests: [],
@@ -153,6 +162,8 @@ export default {
       this.isLoading = true;
       const { data } = await http.get(url);
       this.guests = data;
+      this.totalConfirmed = data.confirmed;
+      this.totalUnconfirmed = data.unconfirmed;
       this.isLoading = false;
     },
     async setStatus(guest) {
