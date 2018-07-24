@@ -157,7 +157,7 @@ export default {
         url = `${url}&name=${this.filter.name}`;
       }
       if (this.filter.confirmed) {
-        url = `${url}&name=${this.filter.confirmed}`;
+        url = `${url}&confirmed=${this.filter.confirmed}`;
       }
 
       this.isLoading = true;
