@@ -49,7 +49,14 @@
                     type="text" style="margin-bottom:1rem"
                     placeholder="Nome"></b-form-input>
             </b-col>
-            </b-row>
+            <b-col>
+               <b-form-select v-model="form.invitedBy" class="mb-3">
+                <option :value="null" disabled>Selecione</option>
+                <option value="Albo">Albo</option>
+                <option value="Camila">Camila</option>
+              </b-form-select>
+            </b-col>
+          </b-row>
         </b-container>
       </b-modal>
 
@@ -118,7 +125,7 @@ export default {
           label: 'Ações'
         }
       ],
-      form: {}
+      form: { name: '', invitedBy: null }
     };
   },
   async created() {
@@ -138,11 +145,14 @@ export default {
     },
     async submit() {
       try {
+        this.isLoading = true;
         const { data } = await http.post('guests', this.form);
         swal('Convidado criado', '', 'success');
         await this.fetchData();
+        this.isLoading = false;
       } catch (error) {
         console.log(error);
+        this.isLoading = false;
       }
     },
     async fetchData(pageFromPagination) {
@@ -178,6 +188,8 @@ export default {
         });
 
         if (willConfirm) {
+          this.isLoading = true;
+
           const payload = {
             _id: guest._id,
             confirmed: !guest.confirmed
@@ -185,9 +197,12 @@ export default {
           const res = await http.patch('guests', payload);
           swal('Tudo certo!', 'Presença desmarcada, obrigado!', 'success');
           await this.fetchData();
+          this.isLoading = false;
         }
       } catch (error) {
         swal('Error', 'Falha ao atualizar convidado', 'error');
+        this.isLoading = false;
+
         console.log(error);
       }
     },
@@ -208,6 +223,7 @@ export default {
         }
       } catch (error) {
         console.log(error);
+        this.isLoading = false;
       }
     }
   }
