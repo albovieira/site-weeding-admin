@@ -103,6 +103,10 @@ export default {
           label: 'Email'
         },
         {
+          key: 'phone',
+          label: 'Telefone'
+        },
+        {
           key: 'confirmed',
           label: 'Confirmado',
           formatter: value => {
