@@ -14,6 +14,14 @@
           <b-form-input v-model="filter.name" type="text" placeholder="Filtre pelo nome" @change="fetchData"></b-form-input>
         </b-col>
         <b-col>
+           <b-form-select v-model="filter.invitedBy" class="mb-3" @input="fetchData">
+                <option :value="null" disabled>Selecione</option>
+                <option value="Albo">Albo</option>
+                <option value="Camila">Camila</option>
+            </b-form-select>
+        </b-col>
+
+        <b-col>
           <b-form-select v-model="filter.confirmed" class="mb-3" @input="fetchData">
             <option :value="null" disabled>Selecione</option>
             <option value="yes">Confirmado</option>
@@ -22,6 +30,11 @@
         </b-col>
         <b-col>
           <b-button @click="showModal" variant="success">Novo</b-button>
+        </b-col>
+        <b-col>
+            <b-button @click="removeFilters" size="sm" variant="danger">
+              Limpar Filtros
+            </b-button>
         </b-col>
       </b-row>
       <b-row>
@@ -83,7 +96,7 @@ export default {
       totalConfirmed: 0,
       totalUnconfirmed: 0,
       page: 1,
-      filter: { confirmed: null },
+      filter: { confirmed: null, invitedBy: '' },
       guests: [],
       fields: [
         'name',
@@ -170,6 +183,9 @@ export default {
       if (this.filter.name) {
         url = `${url}&name=${this.filter.name}`;
       }
+      if (this.filter.invitedBy) {
+        url = `${url}&invitedBy=${this.filter.invitedBy}`;
+      }
       if (this.filter.confirmed) {
         url = `${url}&confirmed=${this.filter.confirmed}`;
       }
@@ -229,6 +245,9 @@ export default {
         console.log(error);
         this.isLoading = false;
       }
+    },
+    removeFilters() {
+      this.filter = { confirmed: null, invitedBy: '' };
     }
   }
 };
